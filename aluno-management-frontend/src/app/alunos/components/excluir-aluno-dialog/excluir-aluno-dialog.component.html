@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Excluir Aluno</h2>
+
+<mat-dialog-content>
+  Tem certeza que deseja excluir o aluno <strong>{{ data.nome }}</strong>?
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+
+  <button mat-stroked-button (click)="fechar(false)">
+    Cancelar
+  </button>
+
+  <button mat-raised-button color="warn" (click)="fechar(true)">
+    Excluir
+  </button>
+
+</mat-dialog-actions>

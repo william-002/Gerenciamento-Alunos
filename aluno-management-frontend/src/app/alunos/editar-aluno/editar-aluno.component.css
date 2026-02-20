@@ -1,0 +1,109 @@
+
+.page {
+  width: 50%;
+  margin: auto;
+  padding: 6px;
+  
+}
+
+
+/* Card e conteúdo */
+.view-card {
+  max-width: 650px;
+  margin: 10px auto 40px auto;
+  padding: 16px 23px;
+}
+
+.view-content {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* um pouco mais de respiro entre campos */
+}
+
+/* Cabeçalho com seta e título*/
+.view-header {
+  padding-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.view-title {
+  padding: 0;
+  font-size: 12px;   
+  font-weight: 400; 
+}
+/* Foto ao lado do input */
+.foto-linha {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+
+/* Mantém o tamanho da foto */
+.foto-aluno {
+  width: 165px;
+  height: 180px;
+  border-radius: 8px;
+  object-fit: cover;
+ 
+}
+
+
+.view-field {
+  width: 100%;
+}
+
+/* Ícone de voltar alinhado à esquerda  */
+.back-button {
+  margin-left: -10px;
+  padding-right: 4px;
+}
+
+/* Ícones prefix nos inputs */
+mat-icon[matPrefix] {
+  margin-right: 8px;
+  font-size: 20px;
+  height: 20px;
+  width: 20px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+}
+
+/* Grupo de status com radios em linha */
+.status-group {
+  display: flex;
+  gap: 20px;
+  padding: 6px 2px 2px 2px;
+}
+
+/* Botões: Cancelar à esquerda / Salvar à direita, mesma linha */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+/* Ambos ocupam a mesma largura */
+.btn-cancelar,
+.btn-salvar {
+  flex: 1;
+  height: 40px;
+}
+
+/* Estilo dos botões */
+.btn-cancelar {
+  color: #555;
+  border-color: #ccc;
+}
+
+.btn-salvar {
+  background-color: #e11b22; 
+  color: #fff;
+}
+

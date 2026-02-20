@@ -1,0 +1,136 @@
+.page{
+width: 50%;
+margin: auto;
+padding: 6px;
+
+}
+
+.view-card {
+  max-width: 650px;
+  margin: 10px auto 40px auto; 
+  padding: 16px 23px;
+ }
+.view-header{
+  padding-bottom: 16px;
+}
+.view-title {
+  padding: 0;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.view-content {
+  padding: 18px ;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  
+}
+
+.view-field {
+  width: 100%;
+}
+
+
+.back-button {
+  margin-left: -10px;
+  padding-right: 4px;  /* puxa mais para a esquerda */
+}
+
+
+.foto-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+  margin-right: 26px;
+  
+}
+
+
+.foto-borda {
+  width: 165px;
+  height: 180px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* mantém formato da foto */
+}
+
+.foto-aluno {
+  width: 165px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px; 
+  
+  
+}
+
+/* Bloco do status como se fosse mais um campo */
+.view-status {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.view-status-label {
+  font-size: 12px;
+  color: rgba(0,0,0,0.6);
+  margin-left: 2px; /* alinha visualmente com label dos mat-form-field */
+}
+
+.view-radio + .view-radio {
+  margin-left: 6px;
+}
+
+/* Botão full-width exatamente como a “largura dos inputs” */
+.view-button {
+  width: 100%;
+  margin-top: 8px;
+}
+
+/* container da linha de status */
+.status-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 2px;
+}
+
+/* bolinha */
+.status-indicador {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* verde = ATIVO */
+.status-ativo {
+  background-color: #2ecc71;
+}
+
+/* amarelo = INATIVO */
+.status-inativo {
+  background-color: #f1c40f;
+}
+
+/* texto ao lado */
+.status-text {
+  font-size: 13px;
+}
+
+mat-icon[matPrefix]{
+  
+  margin-right: 8px;
+  font-size: 20px;         
+  height: 20px;
+  width: 20px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;       /* Alinha verticalmente */
+  justify-content: center;
+  color: #555;
+
+}

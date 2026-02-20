@@ -1,0 +1,39 @@
+/* Caixa do modal semelhante ao card */
+:host ::ng-deep .mat-mdc-dialog-surface {
+  padding: 0 !important;
+  border-radius: 10px !important;
+}
+
+/* Título simples*/
+h2[mat-dialog-title] {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 16px 20px 0 20px;
+  margin: 0;
+}
+
+/* Texto central simples */
+mat-dialog-content {
+  padding: 12px 20px 4px 20px;
+  font-size: 14px;
+  color: #333;
+}
+
+mat-dialog-actions {
+  padding: 12px 20px 16px 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+
+button[mat-stroked-button] {
+  border-color: #bdbdbd;
+  color: #555;
+}
+
+
+button[mat-flat-button] {
+  background-color: #d32f2f !important;
+  color: #fff;
+}

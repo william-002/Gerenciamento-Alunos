@@ -1,0 +1,126 @@
+.page {
+  width: 50%;
+  margin: auto;
+  padding: 6px;
+}
+
+.view-card {
+  max-width: 650px;
+  margin: 10px auto 40px auto;
+  padding: 16px 23px;
+}
+
+.view-header {
+  padding-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.view-title {
+  padding: 0 0 8px 0;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+
+/* Foto em linha slot e input à direita */
+.foto-linha {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 12px;
+}
+
+/* Slot com borda mostra contorno mesmo sem foto */
+.foto-borda {
+  width: 165px;
+  height: 180px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;        /* mantém a imagem dentro do contorno */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Foto ocupa o slot */
+.foto-aluno {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Input alinhado à direita da foto */
+.input-foto {
+  cursor: pointer;
+}
+
+.view-content {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.view-field {
+  width: 100%;
+}
+
+.back-button {
+  margin-left: -10px;
+  padding-right: 4px;
+}
+
+.view-button {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.view-button-cancel {
+  width: 100%;
+  margin-top: 4px;
+  color: #555;
+}
+
+/* Ícones prefix */
+mat-icon[matPrefix] {
+  margin-right: 8px;
+  font-size: 20px;
+  height: 20px;
+  width: 20px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+}
+
+/* Botões lado a lado */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.btn-cancelar,
+.btn-cadastrar {
+  flex: 1;
+  height: 40px;
+}
+
+.btn-cancelar {
+  color: #555;
+  border-color: #ccc;
+}
+
+.btn-cadastrar {
+  background-color: #e11b22;
+  color: #fff;
+}
+
+.field-error-backend {
+  color: #d93025;
+  font-size: 12px;
+  margin: -6px 0 8px 2px;
+}

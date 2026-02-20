@@ -1,0 +1,77 @@
+<form class="page" (ngSubmit)="salvar()">
+  <mat-card class="view-card">
+    <mat-card-content class="view-content mat-elevation-z8">
+
+      <!-- Header com voltar + título -->
+      <div class="view-header">
+        <button mat-icon-button type="button" (click)="voltar()" class="back-button">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <span class="view-title">Novo Aluno</span>
+      </div>
+
+      <!-- Foto -->
+      <mat-label>Foto do Aluno</mat-label>
+      <div class="foto-linha">
+        <div class="foto-borda">
+          <img *ngIf="fotoPreview" [src]="fotoPreview" class="foto-aluno" />
+        </div>
+
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" class="input-foto" />
+      </div>
+
+      <!-- Nome -->
+      <mat-label>Nome Completo</mat-label>
+      <mat-form-field appearance="outline" class="view-field">
+        <mat-icon matPrefix>person</mat-icon>
+        <input matInput placeholder="Digite o nome do aluno" name="nome" maxlength="200" [(ngModel)]="aluno.nome"
+          [formControl]="nome">
+        <mat-error *ngIf="nome.invalid">{{ errorValidName() }}</mat-error>
+      </mat-form-field>
+
+      <!-- Email -->
+      <mat-label>Email</mat-label>
+      <mat-form-field appearance="outline" class="view-field">
+        <mat-icon matPrefix>email</mat-icon>
+        <input matInput placeholder="aluno@email.com" type="email" name="email" maxlength="254"
+          [(ngModel)]="aluno.email" [formControl]="email">
+        <mat-error *ngIf="email.invalid">{{ errorValidEmail() }}</mat-error>
+      </mat-form-field>
+
+      <!-- CPF -->
+      <mat-label>CPF</mat-label>
+      <mat-form-field appearance="outline" class="view-field">
+        <mat-icon matPrefix>badge</mat-icon>
+        <input matInput placeholder="000.000.000-00" name="cpf" maxlength="14" [(ngModel)]="aluno.cpf"
+          [formControl]="cpf" (input)="mensagemBackend=''">
+        <mat-error *ngIf="cpf.invalid">{{ errorValidCPF() }}</mat-error>
+      </mat-form-field>
+
+      <!-- mensagem do backend -->
+      <div class="field-error-backend" *ngIf="mensagemBackend">
+        {{ mensagemBackend }}
+      </div>
+
+      <!-- Telefone -->
+      <mat-label>Telefone</mat-label>
+      <mat-form-field appearance="outline" class="view-field">
+        <mat-icon matPrefix>phone</mat-icon>
+        <input matInput placeholder="(00) 00000-0000" name="telefone" maxlength="11" [(ngModel)]="aluno.telefone"
+          [formControl]="telefone">
+        <mat-error *ngIf="telefone.invalid">{{ errorValidPhone() }}</mat-error>
+      </mat-form-field>
+
+      <!-- Botões lado a lado -->
+      <div class="actions">
+        <button mat-stroked-button type="button" (click)="voltar()" class="btn-cancelar">
+          Cancelar
+        </button>
+
+        <button mat-raised-button color="primary" type="submit" class="btn-cadastrar" [disabled]="buttonDisabled()">
+          Cadastrar
+        </button>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</form>

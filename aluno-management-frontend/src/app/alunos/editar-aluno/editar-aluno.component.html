@@ -1,0 +1,79 @@
+<form class="page" (ngSubmit)="salvar()" *ngIf="aluno">
+  <div class="zoom-wrap">
+  <mat-card class="view-card">
+    <mat-card-content class="view-content mat-elevation-z8">
+
+      <!-- Header com voltar e título -->
+      <div class="view-header">
+        <button mat-icon-button type="button" (click)="voltar()" class="back-button">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <span class="view-title">Editar Aluno</span>
+      </div>
+
+      <!-- Foto -->
+      <div class="foto-linha">
+        <img *ngIf="fotoPreview || aluno.fotoUrl" [src]="fotoPreview || aluno.fotoUrl" class="foto-aluno" />
+
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" class="input-foto" />
+      </div>
+
+      <!-- Nome (desabilitado) -->
+      <mat-label>Nome Completo</mat-label>
+      <mat-form-field appearance="outline" class="view-field">
+        <mat-icon matPrefix>person</mat-icon>
+        <input matInput name="nome" [value]="aluno.nome" disabled>
+      </mat-form-field>
+
+      <!-- Email (editável) -->
+      <mat-label>Email</mat-label>
+      <mat-form-field appearance="outline" class="view-field">
+        <mat-icon matPrefix>email</mat-icon>
+        <input matInput type="email" name="email" maxlength="254" placeholder="aluno@email.com"
+          [(ngModel)]="aluno.email" (ngModelChange)="verificarMudancas()">
+        <mat-error *ngIf="!emailValido(aluno?.email)">
+          Informe um e-mail válido.
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Telefone (editável) -->
+      <mat-label>Telefone</mat-label>
+      <mat-form-field appearance="outline" class="view-field">
+        <mat-icon matPrefix>phone</mat-icon>
+        <input matInput name="telefone" maxlength="11" placeholder="(00) 00000-0000" [(ngModel)]="aluno.telefone"
+          (ngModelChange)="verificarMudancas()">
+        <mat-error *ngIf="!aluno?.telefone">
+          Informe o telefone.
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Matrícula (desabilitada) -->
+      <mat-label>Matrícula</mat-label>
+      <mat-form-field appearance="outline" class="view-field">
+        <mat-icon matPrefix>confirmation_number</mat-icon>
+        <input matInput name="matricula" [value]="aluno.matricula" disabled>
+      </mat-form-field>
+
+
+      <!-- Status (editável) -->
+      <mat-label>Status</mat-label>
+      <mat-radio-group class="status-group" [(ngModel)]="aluno.status" name="status" (change)="verificarMudancas()">
+        <mat-radio-button value="ATIVO">Ativo</mat-radio-button>
+        <mat-radio-button value="INATIVO">Inativo</mat-radio-button>
+      </mat-radio-group>
+
+      <!-- Botões (cancelar a esquerda / salvar a direita) -->
+      <div class="actions">
+        <button mat-stroked-button type="button" (click)="voltar()" class="btn-cancelar">
+          Cancelar
+        </button>
+
+        <button mat-raised-button color="primary" type="submit" class="btn-salvar" [disabled]="btnDesabilitado">
+          Salvar
+        </button>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+  </div>
+</form>

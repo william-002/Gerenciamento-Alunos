@@ -1,0 +1,63 @@
+<div class="login-page">
+  <mat-card class="login-card mat-elevation-z8">
+    <mat-card-content>
+
+      <h1 class="login-title">Start Students</h1>
+      <p class="login-subtitle">Faça seu login para continuar</p>
+
+      <!-- Usuário -->
+      <mat-label>Usuário</mat-label>
+      <mat-form-field appearance="outline" class="login-field">
+        <mat-icon matPrefix>person</mat-icon>
+        <input
+          matInput
+          type="text"
+          [(ngModel)]="usuario"
+          name="usuario"
+          (input)="validarUsuario()"
+          placeholder="Seu usuário"
+          maxlength="100">
+      </mat-form-field>
+      <small class="error" *ngIf="usuario && !usuarioValido">
+        Usuário deve ter no mínimo 8 caracteres, com letras e números
+      </small>
+
+      <!-- Senha -->
+      <mat-label>Senha</mat-label>
+      <mat-form-field appearance="outline" class="login-field">
+        <mat-icon matPrefix>lock</mat-icon>
+        <input
+          matInput
+          [type]="mostrarSenha ? 'text' : 'password'"
+          [(ngModel)]="senha"
+          name="senha"
+          (input)="validarSenha()"
+          placeholder="Sua senha"
+          maxlength="100">
+
+        <!-- Olho que mostra/oculta -->
+        <button
+          mat-icon-button
+          matSuffix
+          type="button"
+          aria-label="Mostrar/ocultar senha"
+          (click)="mostrarSenha = !mostrarSenha">
+          <mat-icon>{{ mostrarSenha ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+      </mat-form-field>
+      <small class="error" *ngIf="senha && !senhaValida">
+        Senha deve ter no mínimo 8 caracteres, com letras e números
+      </small>
+
+      <!-- Botão -->
+      <button
+        mat-raised-button
+        class="btn-acessar"
+        (click)="entrar()"
+        [disabled]="!usuarioValido || !senhaValida">
+        Acessar
+      </button>
+
+    </mat-card-content>
+  </mat-card>
+</div>
