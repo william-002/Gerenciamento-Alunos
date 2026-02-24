@@ -2,6 +2,7 @@ package br.com.capgemini.alunomanagement.adapters.outbound.storage;
 
 import br.com.capgemini.alunomanagement.adapters.outbound.jpa.entity.AlunoEntity;
 import br.com.capgemini.alunomanagement.adapters.outbound.jpa.repository.AlunoJpaRepository;
+import br.com.capgemini.alunomanagement.domain.ports.out.AlunoFotoStoragePort;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -10,7 +11,7 @@ import java.io.IOException;
 import java.nio.file.*;
 
 @Service
-public class AlunoFotoStorageService {
+public class AlunoFotoStorageService implements AlunoFotoStoragePort {
 
     // diretório base fixo para manter simples (pode virar property depois)
     private static final String BASE_DIR = "uploads/alunos";

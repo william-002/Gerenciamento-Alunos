@@ -4,7 +4,6 @@ import br.com.capgemini.alunomanagement.adapters.inbound.rest.dto.AlunoDetalheDT
 import br.com.capgemini.alunomanagement.adapters.inbound.rest.dto.AlunoRequestDTO;
 import br.com.capgemini.alunomanagement.adapters.inbound.rest.dto.AlunoResponseDTO;
 import br.com.capgemini.alunomanagement.adapters.inbound.rest.dto.AlunoUpdateDTO;
-import br.com.capgemini.alunomanagement.adapters.outbound.storage.AlunoFotoStorageService;
 import br.com.capgemini.alunomanagement.domain.model.Aluno;
 import br.com.capgemini.alunomanagement.domain.ports.in.*;
 import jakarta.validation.Valid;
@@ -35,16 +34,19 @@ public class AlunoController {
 
     private final ExcluirAlunoUseCase excluirAlunoUseCase;
 
-    private final AlunoFotoStorageService fotoStorageService;
+    private final UploadFotoUseCase uploadFotoUseCase;
+
+    private final BuscarFotoUseCase buscarFotoUseCase;
 
 
-    public AlunoController(CadastrarAlunoUseCase cadastrarAlunoUseCase, ListarAlunosUseCase listarAlunosUseCase, BuscarAlunoPorIdUseCase buscarAlunoPorIdUseCase, EditarAlunoUseCase editarAlunoUseCase, ExcluirAlunoUseCase excluirAlunoUseCase, AlunoFotoStorageService fotoStorage) {
+    public AlunoController(CadastrarAlunoUseCase cadastrarAlunoUseCase, ListarAlunosUseCase listarAlunosUseCase, BuscarAlunoPorIdUseCase buscarAlunoPorIdUseCase, EditarAlunoUseCase editarAlunoUseCase, ExcluirAlunoUseCase excluirAlunoUseCase, UploadFotoUseCase uploadFotoUseCase, BuscarFotoUseCase buscarFotoUseCase) {
         this.cadastrarAlunoUseCase = cadastrarAlunoUseCase;
         this.listarAlunosUseCase = listarAlunosUseCase;
         this.buscarAlunoPorIdUseCase = buscarAlunoPorIdUseCase;
         this.editarAlunoUseCase = editarAlunoUseCase;
         this.excluirAlunoUseCase = excluirAlunoUseCase;
-        this.fotoStorageService = fotoStorage;
+        this.uploadFotoUseCase = uploadFotoUseCase;
+        this.buscarFotoUseCase = buscarFotoUseCase;
     }
 
 
@@ -121,7 +123,7 @@ public class AlunoController {
             return ResponseEntity.badRequest().build();
         }
         //Chama método e salva a foto.
-        fotoStorageService.salvarFoto(id, foto);
+        uploadFotoUseCase.salvarFoto(id, foto);
         return ResponseEntity.noContent().build();
     }
 
@@ -129,7 +131,7 @@ public class AlunoController {
     @GetMapping("/{id}/foto")
     public ResponseEntity<byte[]> downloadFoto(@PathVariable Long id) throws IOException {
         //Se não existir, retorna 404
-        byte[] bytes = fotoStorageService.carregarFoto(id);
+        byte[] bytes = buscarFotoUseCase.carregarFoto(id);
         if (bytes == null) return ResponseEntity.notFound().build();
        //Retorna em bytes com "image/jpeg"
         return ResponseEntity.ok()
