@@ -14,7 +14,7 @@
       <mat-label>Foto do Aluno</mat-label>
       <div class="foto-linha">
         <div class="foto-borda">
-          <img *ngIf="fotoPreview" [src]="fotoPreview" class="foto-aluno" />
+          <img [src]="fotoPreview" appDefaultImage class="foto-aluno" />
         </div>
 
         <input type="file" (change)="onFileSelected($event)" accept="image/*" class="input-foto" />

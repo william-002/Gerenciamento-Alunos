@@ -13,7 +13,7 @@
 
       <!-- Foto -->
       <div class="foto-linha">
-        <img *ngIf="fotoPreview || aluno.fotoUrl" [src]="fotoPreview || aluno.fotoUrl" class="foto-aluno" />
+        <img  [src]="fotoPreview || aluno.fotoUrl" appDefaultImage alt="Foto-aluno" class="foto-aluno" />
 
         <input type="file" (change)="onFileSelected($event)" accept="image/*" class="input-foto" />
       </div>

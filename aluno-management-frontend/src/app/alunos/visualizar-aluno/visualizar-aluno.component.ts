@@ -40,4 +40,10 @@ statusValue(status?: string): 'ativo' | 'inativo' | null {
   return null;
 }
 
+imgError(event: any) {
+  (event.target as HTMLImageElement).src = 'assets/images/default-user.png';
+
+}
+
+
 }

@@ -27,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material';
 import { ExcluirAlunoDialogComponent } from './alunos/components/excluir-aluno-dialog/excluir-aluno-dialog.component';
 import { MatSnackBarModule } from '@angular/material';
+import { DefaultImageDirective } from './shared/default-image.directive';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MatSnackBarModule } from '@angular/material';
     NovoAlunoComponent,
     LoginComponent,
     VisualizarAlunoComponent,
-    ExcluirAlunoDialogComponent
+    ExcluirAlunoDialogComponent,
+    DefaultImageDirective
   ],
   imports: [
     BrowserModule,
