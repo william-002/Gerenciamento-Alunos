@@ -1,0 +1,15 @@
+<mat-label *ngIf="label">{{ label }}</mat-label>
+
+<mat-form-field appearance="outline" class="view-field">
+  <mat-icon *ngIf="icon" matPrefix color="primary">{{ icon }}</mat-icon>
+
+  <!-- input somente leitura-->
+  <input
+    matInput
+    [attr.type]="type"
+    [value]="displayValue"
+    disabled
+  >
+
+  <mat-hint *ngIf="hint">{{ hint }}</mat-hint>
+</mat-form-field>

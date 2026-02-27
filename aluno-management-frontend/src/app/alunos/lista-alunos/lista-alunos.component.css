@@ -55,37 +55,6 @@
 }
 
 
-.acoes {
-    display: flex;
-    gap: 8px;
-    padding-left: 16px;
-    padding-right: 45px;
-   
-    
-}
-
-.acao-visualizar {
-    border-radius: 15%;
-    background-color: #6f7071;
-    color: white;
-}
-
-.acao-editar {
-    border-radius: 15%;
-    background-color: #1e71c5;
-    color: white;
-}
-
-.acao-excluir {
-    border-radius: 15%;
-    background-color: #f50909;
-    color: white;
-    
-}
-
-.acoes matTooltip {
-    background-color: #08a8a8;
-}
 
 mat-header-cell{
     background-color: #f5f1f1;
@@ -102,37 +71,8 @@ mat-cell {
     border-right: 1px solid #e0e0e0;
     padding-right: 0px;
     padding-left: 20px;
-    justify-content: left;
+    justify-content: flex-start;
 }
 
-/* Container da célula */
-.status-cell {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* Bolinha do status */
-.status-indicador {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-/* Verde = ativo */
-.status-ativo {
-  background-color: #2ecc71;
-}
-
-/* Amarelo = inativo */
-.status-inativo {
-  background-color: #f1c40f;
-}
-
-/* Texto do status */
-.status-text {
-  font-size: 10px;
-}
 
 

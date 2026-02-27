@@ -1,0 +1,22 @@
+<div class="acoes">
+  <button class="acao-visualizar"
+          mat-icon-button
+          matTooltip="Ver detalhes"
+          (click)="view.emit(item)">
+    <mat-icon>visibility</mat-icon>
+  </button>
+
+  <button class="acao-editar"
+          mat-icon-button
+          matTooltip="Editar"
+          (click)="edit.emit(item)">
+    <mat-icon>edit</mat-icon>
+  </button>
+
+  <button class="acao-excluir"
+          mat-icon-button
+          matTooltip="Excluir"
+          (click)="remove.emit(item)">
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>

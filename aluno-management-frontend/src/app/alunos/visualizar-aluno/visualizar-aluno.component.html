@@ -1,4 +1,4 @@
-<form class="page">
+<form class="page" [formGroup]="form">
   <mat-card *ngIf="aluno" class="view-card">
 
     <mat-card-content class="view-content mat-elevation-z8">
@@ -11,62 +11,31 @@
 
         <span class="view-title">Detalhes do Aluno</span>
       </div>
-      
+
       <div class="foto-container">
         <div class="foto-borda">
-          <img *ngIf="aluno?.fotoUrl" [src]="aluno.fotoUrl" appDefaultImage alt="Foto de {{aluno.nome}}" class="foto-aluno">
+          <img *ngIf="aluno?.fotoUrl" [src]="aluno.fotoUrl" appDefaultImage alt="Foto de {{aluno.nome}}"
+            class="foto-aluno">
         </div>
       </div>
 
 
-      <mat-label>Nome Completo</mat-label>
-      <mat-form-field appearance="outline" class="view-field">
+      <app-view-field label="Nome Completo" icon="person" [value]="form.value.nome"></app-view-field>
 
-        <mat-icon matPrefix color="primary">person</mat-icon>
-        <input matInput [value]="aluno.nome" disabled>
-      </mat-form-field>
+      <app-view-field label="CPF" icon="badge" [value]="form.value.cpf | cpf">
+      </app-view-field>
 
-      <mat-label>CPF</mat-label>
-      <mat-form-field appearance="outline" class="view-field">
+      <app-view-field label="Email" icon="email" [value]="form.value.email" type="email">
+      </app-view-field>
 
-        <mat-icon matPrefix color="primary">badge</mat-icon>
-        <input matInput [value]="formatarCPF(aluno.cpf)" disabled>
-      </mat-form-field>
+      <app-view-field label="Telefone" icon="phone" [value]="form.value.telefone" type="tel">
+      </app-view-field>
 
-      <mat-label>Email</mat-label>
-      <mat-form-field appearance="outline" class="view-field">
-
-        <mat-icon matPrefix color="primary">email</mat-icon>
-        <input matInput [value]="aluno.email" disabled>
-      </mat-form-field>
-
-      <mat-label>Telefone</mat-label>
-      <mat-form-field appearance="outline" class="view-field">
-
-        <mat-icon matPrefix color="primary">phone</mat-icon>
-        <input matInput [value]="aluno.telefone" disabled>
-      </mat-form-field>
-
-      <mat-label>Matrícula</mat-label>
-      <mat-form-field appearance="outline" class="view-field">
-
-        <mat-icon matPrefix color="primary">#</mat-icon>
-        <input matInput [value]="aluno.matricula" disabled>
-      </mat-form-field>
+      <app-view-field label="Matrícula" icon="confirmation_number" [value]="aluno?.matricula">
+      </app-view-field>
 
       <!-- Status somente leitura / desabilitado) -->
-      <div class="view-status">
-        <label class="view-status-label">Status</label>
-
-        <div class="status-box">
-          <span class="status-indicador" [ngClass]="{
-        'status-ativo': aluno.status === 'ATIVO',
-        'status-inativo': aluno.status === 'INATIVO'
-      }" matTooltip="{{ aluno.status }}"></span>
-
-          <span class="status-text">{{ aluno.status }}</span>
-        </div>
-      </div>
+      <app-status-badge [status]="form.value.status"></app-status-badge>
 
       <!-- Botão full-width logo abaixo dos campos -->
       <button class="view-button" mat-raised-button color="primary" (click)="voltar()">

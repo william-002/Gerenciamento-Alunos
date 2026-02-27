@@ -1,83 +1,71 @@
+<mat-card class="view-card mat-elevation-z4">
 
-<mat-card class="view-card mat-elevation-z4" >
+  <!--TOPO-->
+  <div class="top-header">
+    <h1 class="titulo">Alunos</h1>
 
-<!--TOPO-->
-<div class="top-header">
-  <h1 class="titulo">Alunos</h1>
+    <button mat-raised-button color="primary" routerLink="/alunos/novo" class="btn-novo">Novo Aluno</button>
 
-<button mat-raised-button color="primary" routerLink="/alunos/novo" class="btn-novo">Novo Aluno</button>
+  </div>
 
-</div>
+  <!--BARRA DE BUSCA-->
+  <div class="barra-top">
+    <mat-form-field appearance="outline" class="campo-busca">
 
-<!--BARRA DE BUSCA-->
-<div class="barra-top">
-<mat-form-field  appearance="outline" class="campo-busca">
-
-  <input matInput [(ngModel)]="filtro" (keyup)="buscar()" class="buscar" placeholder="Buscar por nome ou matrícula...">
-  <mat-icon matPrefix>search</mat-icon>
-  </mat-form-field>
-
-
-</div>
-
-<!--TABELA-->
-
-<mat-table [dataSource]="dataSource" class="table mat-elevation-z2">
-
-  <ng-container matColumnDef="matricula">
-
-    <mat-header-cell *matHeaderCellDef >Matrícula</mat-header-cell>
-    <mat-cell *matCellDef="let aluno"> {{aluno.matricula}}</mat-cell>
-
-  </ng-container>
-
- <ng-container matColumnDef="nome">
-    
-    <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
-    <mat-cell *matCellDef="let aluno"> {{aluno.nome}}</mat-cell>
-
-  </ng-container>
-
-   <ng-container class="status" matColumnDef="status">
-    
-    <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
-    <mat-cell *matCellDef="let aluno" class="status-cell">
-
-  <span 
-    class="status-indicador"
-    [ngClass]="{
-      'status-ativo': aluno.status === 'ATIVO',
-      'status-inativo': aluno.status === 'INATIVO'
-    }"
-    matTooltip="{{ aluno.status }}"
-  ></span>
-
-  <span class="status-text">{{ aluno.status }}</span>
-
-</mat-cell>
-
-  </ng-container>
-
-   <ng-container matColumnDef="acoes">
-    
-    <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
-    <mat-cell *matCellDef="let aluno" class="acoes"> 
-       <button class="acao-visualizar" matTooltip="Ver detalhes" matTooltipPosition="left" mat-icon-button  (click)="visualizarAluno(aluno.id)"><mat-icon>visibility</mat-icon></button>
-      <button class="acao-editar" matTooltip="Editar" matTooltipPosition="left" mat-icon-button  (click)="editarAluno(aluno.id)"><mat-icon>edit</mat-icon></button>
-      <button class="acao-excluir" matTooltip="Excluir" matTooltipPosition="right" mat-icon-button (click)="abrirModalExclusao(aluno)"><mat-icon>delete</mat-icon>
-</button>
-    </mat-cell>
-
-  </ng-container>
-  
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      <input matInput [(ngModel)]="filtro" (keyup)="buscar()" class="buscar"
+        placeholder="Buscar por nome ou matrícula...">
+      <mat-icon matPrefix>search</mat-icon>
+    </mat-form-field>
 
 
-</mat-table>
+  </div>
 
-<mat-paginator class="paginator" [pageSizeOptions]="[10]" showFirstLastButtons></mat-paginator>
+  <!--TABELA-->
+
+  <mat-table [dataSource]="dataSource" class="table mat-elevation-z2">
+
+    <ng-container matColumnDef="matricula">
+
+      <mat-header-cell *matHeaderCellDef>Matrícula</mat-header-cell>
+      <mat-cell *matCellDef="let aluno"> {{aluno.matricula}}</mat-cell>
+
+    </ng-container>
+
+    <ng-container matColumnDef="nome">
+
+      <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+      <mat-cell *matCellDef="let aluno"> {{aluno.nome}}</mat-cell>
+
+    </ng-container>
+
+    <ng-container class="status" matColumnDef="status">
+
+      <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+      <mat-cell *matCellDef="let aluno" class="status-cell">
+        <app-status-badge [status]="aluno.status" label=""></app-status-badge>
+      </mat-cell>
+
+    </ng-container>
+
+    <ng-container matColumnDef="acoes">
+
+      <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
+      <mat-cell *matCellDef="let aluno">
+        <app-table-actions [item]="aluno"
+          (view)="visualizarAluno($event.id)" 
+          (edit)="editarAluno($event.id)"
+          (remove)="abrirModalExclusao($event)">
+        </app-table-actions>
+      </mat-cell>
+
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+
+  </mat-table>
+
+  <mat-paginator class="paginator" [pageSizeOptions]="[10]" showFirstLastButtons></mat-paginator>
 
 </mat-card>
-
- 

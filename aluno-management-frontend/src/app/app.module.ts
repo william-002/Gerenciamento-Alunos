@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { EditarAlunoComponent } from './alunos/editar-aluno/editar-aluno.component';
 import { ListaAlunosComponent } from './alunos/lista-alunos/lista-alunos.component'
 import { FormsModule } from '@angular/forms';
@@ -23,11 +23,16 @@ import { MatRadioModule } from '@angular/material';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatTooltipModule } from '@angular/material';
 import { MatPaginatorModule } from '@angular/material';
-import { ReactiveFormsModule } from '@angular/forms'; 
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material';
 import { ExcluirAlunoDialogComponent } from './alunos/components/excluir-aluno-dialog/excluir-aluno-dialog.component';
 import { MatSnackBarModule } from '@angular/material';
 import { DefaultImageDirective } from './shared/default-image.directive';
+import { ViewFieldComponent } from './shared/view-field/view-field.component';
+import { StatusBadgeComponent } from './shared/status-badge/status-badge.component';
+import { CpfPipe } from './shared/pipes/cpf.pipe';
+import { InputFieldComponent } from './shared/input-field/input-field.component';
+import { TableActionsComponent } from './shared/table-actions/table-actions.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +43,12 @@ import { DefaultImageDirective } from './shared/default-image.directive';
     LoginComponent,
     VisualizarAlunoComponent,
     ExcluirAlunoDialogComponent,
-    DefaultImageDirective
+    DefaultImageDirective,
+    ViewFieldComponent,
+    StatusBadgeComponent,
+    CpfPipe,
+    InputFieldComponent,
+    TableActionsComponent
   ],
   imports: [
     BrowserModule,
@@ -63,8 +73,14 @@ import { DefaultImageDirective } from './shared/default-image.directive';
     MatSnackBarModule
   ],
 
-  
- entryComponents: [
+  exports: [
+    ViewFieldComponent,
+    StatusBadgeComponent,
+    CpfPipe,
+    InputFieldComponent
+  ],
+
+  entryComponents: [
     ExcluirAlunoDialogComponent
   ],
 

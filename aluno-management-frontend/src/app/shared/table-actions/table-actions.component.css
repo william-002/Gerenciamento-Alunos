@@ -1,0 +1,24 @@
+.acoes {
+  display: flex;
+  gap: 8px;
+  padding-left: 16px;
+  padding-right: 45px;
+}
+
+.acao-visualizar {
+  border-radius: 15%;
+  background-color: #6f7071;
+  color: white;
+}
+
+.acao-editar {
+  border-radius: 15%;
+  background-color: #1e71c5;
+  color: white;
+}
+
+.acao-excluir {
+  border-radius: 15%;
+  background-color: #f50909;
+  color: white;
+}

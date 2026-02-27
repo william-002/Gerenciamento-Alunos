@@ -5,37 +5,28 @@
       <h1 class="login-title">Start Students</h1>
       <p class="login-subtitle">Faça seu login para continuar</p>
 
-      <!-- Usuário -->
-      <mat-label>Usuário</mat-label>
-      <mat-form-field appearance="outline" class="login-field">
-        <mat-icon matPrefix>person</mat-icon>
-        <input
-          matInput
-          type="text"
-          [(ngModel)]="usuario"
-          name="usuario"
-          (input)="validarUsuario()"
-          placeholder="Seu usuário"
-          maxlength="100">
-      </mat-form-field>
-      <small class="error" *ngIf="usuario && !usuarioValido">
-        Usuário deve ter no mínimo 8 caracteres, com letras e números
-      </small>
+      <!-- Usuário (componentizado) -->
+      <app-input-field
+        label="Usuário"
+        icon="person"
+        placeholder="Seu usuário"
+        [control]="usuarioControl"
+        errorText="Usuário deve ter no mínimo 8 caracteres, com letras e números">
+      </app-input-field>
 
-      <!-- Senha -->
+      <!-- Senha (mantida como no início, só que reativa) -->
       <mat-label>Senha</mat-label>
       <mat-form-field appearance="outline" class="login-field">
         <mat-icon matPrefix>lock</mat-icon>
+
         <input
           matInput
           [type]="mostrarSenha ? 'text' : 'password'"
-          [(ngModel)]="senha"
-          name="senha"
-          (input)="validarSenha()"
+          [formControl]="senhaControl"
           placeholder="Sua senha"
           maxlength="100">
 
-        <!-- Olho que mostra/oculta -->
+        <!-- Olho -->
         <button
           mat-icon-button
           matSuffix
@@ -44,17 +35,19 @@
           (click)="mostrarSenha = !mostrarSenha">
           <mat-icon>{{ mostrarSenha ? 'visibility_off' : 'visibility' }}</mat-icon>
         </button>
+
+        <!-- Erro (mostra após tocar/digitar) -->
+        <mat-error *ngIf="senhaControl.invalid && (senhaControl.touched || senhaControl.dirty)">
+          Senha deve ter no mínimo 8 caracteres, com letras e números
+        </mat-error>
       </mat-form-field>
-      <small class="error" *ngIf="senha && !senhaValida">
-        Senha deve ter no mínimo 8 caracteres, com letras e números
-      </small>
 
       <!-- Botão -->
       <button
         mat-raised-button
         class="btn-acessar"
         (click)="entrar()"
-        [disabled]="!usuarioValido || !senhaValida">
+        [disabled]="form.invalid">
         Acessar
       </button>
 

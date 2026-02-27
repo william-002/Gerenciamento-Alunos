@@ -1,0 +1,16 @@
+<div class="view-status">
+  <label class="view-status-label">{{ label }}</label>
+
+  <div class="status-box">
+    <span
+      class="status-indicador"
+      [ngClass]="{
+        'status-ativo': statusAtual === 'ATIVO',
+        'status-inativo': statusAtual === 'INATIVO'
+      }"
+      [matTooltip]="statusAtual"
+    ></span>
+
+    <span class="status-text">{{ statusAtual }}</span>
+  </div>
+</div>
